@@ -39,5 +39,5 @@ public interface IOrdersDao {
             @Result(property = "member", column = "memberId", javaType = Member.class, one = @One(select = "cn.ytmj.dao.IMemberDao.findById")),
             @Result(property = "travellers",column = "id",javaType = java.util.List.class ,many = @Many(select = "cn.ytmj.dao.ITravellerDao.findByOrdersId"))
     })
-    Orders findById(String id);
+    Orders findById(String id) throws Exception;
 }

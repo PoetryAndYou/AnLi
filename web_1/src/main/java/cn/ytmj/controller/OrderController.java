@@ -50,7 +50,7 @@ public class OrderController {
     }
 
     @RequestMapping("/findById.do")
-    public ModelAndView findById(@RequestParam(name = "id", required = true) String id) {
+    public ModelAndView findById(@RequestParam(name = "id", required = true) String id) throws Exception{
 
         ModelAndView mv = new ModelAndView();
         Orders orders = iOrderService.findById(id);
