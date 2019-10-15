@@ -1,5 +1,6 @@
 package cn.ytmj.dao;
 
+import cn.ytmj.domain.Role;
 import cn.ytmj.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 
@@ -49,4 +50,10 @@ public interface IUserDao {
             @Result(property = "roles", column = "id", javaType = java.util.List.class, many = @Many(select = "cn.ytmj.dao.IRoLeDao.findRoleById"))
     })
     UserInfo findById(String id) throws Exception;
+
+    @Select("select * from role where id not in (select roleid from users_role where userid=#{id})")
+    List<Role> findRoleByUserId(String id) throws Exception;
+
+    @Insert("insert into users_role(userid,roleid) values (#{userId},#{str})")
+    void addRoleToUser(@Param("userId") String userId, @Param("str") String str) throws Exception;
 }

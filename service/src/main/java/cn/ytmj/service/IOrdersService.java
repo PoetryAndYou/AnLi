@@ -9,7 +9,7 @@ import java.util.List;
  * @create 2019-10-12 15:47
  */
 public interface IOrdersService {
-    public List<Orders> findAll(int page, int pageSize) throws Exception;
+    public List<Orders> findAll(Integer page, Integer pageSize) throws Exception;
 
     Orders findById(String id) throws Exception;
 }

@@ -1,5 +1,6 @@
 package cn.ytmj.service;
 
+import cn.ytmj.domain.Role;
 import cn.ytmj.domain.UserInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -15,4 +16,8 @@ public interface IUserService extends UserDetailsService {
     void save(UserInfo userInfo) throws Exception;
 
     UserInfo findById(String id) throws Exception;
+
+    List<Role> findRoleByUserId(String id) throws Exception;
+
+    void addRoleToUser(String userId, String[] ids)throws Exception;
 }

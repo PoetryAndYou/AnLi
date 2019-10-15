@@ -21,8 +21,8 @@ public class IOdersServiceImpl implements IOrdersService {
     private IOrdersDao iOrdersDao;
 
     @Override
-    public List<Orders> findAll(int page, int pageSize) throws Exception {
-        PageHelper.startPage(page,pageSize);
+    public List<Orders> findAll(Integer page, Integer pageSize) throws Exception {
+        PageHelper.startPage(page, pageSize);
         return iOrdersDao.findAll();
     }
 

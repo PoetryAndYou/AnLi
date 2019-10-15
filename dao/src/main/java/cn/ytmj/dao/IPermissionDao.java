@@ -13,4 +13,8 @@ public interface IPermissionDao {
 
     @Select("SELECT * from Permission where id in(SELECT permissionid from role_permission where roleid=#{id})")
     public List<Permission> findPermissionByRoleId(String id) throws Exception;
+
+    @Select("select * from permission")
+    List<Permission> findAll() throws Exception;
+
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private IProductService productService;
+
     @RequestMapping("/save.do")
     public void sava(Product product, HttpServletRequest request, HttpServletResponse response) throws Exception {
         productService.sava(product);
@@ -31,8 +33,8 @@ public class ProductController {
     }
 
     @RequestMapping("/findAll.do")
+    @RolesAllowed("ADMIN")
     public ModelAndView findAll() throws Exception {
-
         ModelAndView mv = new ModelAndView();
         List<Product> all = productService.findAll();
         mv.addObject("productList", all);
@@ -48,7 +50,6 @@ public class ProductController {
 
     }
 */
-
 
 
 }
